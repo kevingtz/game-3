@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package prototype;
+
 
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
