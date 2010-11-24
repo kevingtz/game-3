@@ -30,6 +30,10 @@ public class Lane
         g.draw(leftLine);
         g.draw(rightLine);
     }
+
+    public double getCentre(){
+        return x+(1/2)*width;
+    }
     
     public double getLeft()
     {
