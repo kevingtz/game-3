@@ -20,9 +20,17 @@ public class MoveCars extends Thread {
     @Override
     public void run(){
         while(true){
-            if(car.getY() < size){
-                car.setPosition(car.getX(), car.getY()+1);
-                // pause
+            if(car.getY() < size && car.getY() > -1){
+            	double carx = car.getX();
+            	double cary = car.getY();
+            	carx = dc.getLeftMostLane() - car.width/4 > carx ? 
+            			dc.getLeftMostLane() - car.width/4 : carx;
+            	
+            	carx = dc.getRightMostLane() - car.width + car.width/4  < carx ? 
+            			dc.getRightMostLane() - car.width + car.width/4 : carx;
+            	car.setPosition(carx, car.getY()+1);		
+            	
+            	// pause
                 try {
                     sleep(20);
                 } catch (InterruptedException ex) {
@@ -32,7 +40,7 @@ public class MoveCars extends Thread {
                 dc.update(car);
                 dc.repaint();
             }else{
-               car.setPosition(car.getX(), -car.getHeight());
+               car.setPosition(car.getX(), dc.getHeight()-car.getHeight()-1);
             }
         }
     }
