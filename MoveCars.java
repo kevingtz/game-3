@@ -40,7 +40,7 @@ public class MoveCars extends Thread {
                 dc.update(car);
                 dc.repaint();
             }else{
-               car.setPosition(car.getX(), dc.getHeight()-car.getHeight()-1);
+               car.setPosition(car.getX(), 0);
             }
         }
     }

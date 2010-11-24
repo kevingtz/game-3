@@ -12,7 +12,7 @@ public class GameFrame extends JFrame
 	
 	    Car car = new Car();
 	    Car[] cars = new Car[0];
-	    Lane[] lanes = new Lane[0];
+//	    Lane[] lanes = new Lane[0];
 	    DrawComponent dc = new DrawComponent(3, car, cars, getHeight());
 	    add(dc);
 	

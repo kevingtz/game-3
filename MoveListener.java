@@ -32,11 +32,13 @@ public class MoveListener implements KeyListener {
             }
             if (code == 37) {
                 //System.out.println("LEFT!!");
-                car.setPosition(car.getX()-10, car.getY());
+//                car.setPosition(car.getX()-10, car.getY());
+                car.goLeft();
             }
             if (code == 39) {
                 //System.out.println("RIGHT!!");
-                 car.setPosition(car.getX()+10, car.getY());
+//                 car.setPosition(car.getX()+10, car.getY());
+                 car.goRight();
             }
         }
     }
