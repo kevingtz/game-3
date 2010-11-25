@@ -23,6 +23,8 @@ public class Lane
     public Lane(double width, double height, double x){
         leftLine = new Line2D.Double(x, 0, x, height);
         rightLine = new Line2D.Double(x+width, 0, x+width, height);
+        this.width = width;
+        this.height = height;
         this.x = x;
     }
 
@@ -32,7 +34,7 @@ public class Lane
     }
 
     public double getCentre(){
-        return x+(1/2)*width;
+        return x+width/2;
     }
     
     public double getLeft()
