@@ -11,6 +11,6 @@ public class Obstacles extends Rectangle2D.Double
 	
 	public void moveDown() 
 	{
-		setRect(this.getX(), this.getY()+1, 30, 30);
+		setRect(this.getX(), this.getY()+0.2, 30, 30);
 	}
 }
