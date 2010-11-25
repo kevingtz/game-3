@@ -28,7 +28,7 @@ public class GameFrame extends JFrame
         this.setVisible(true);
 	}
 	
-    void runGame()
+    public void runGame()
     {
     	int defaultLane = 1;
         Lane[] lanes = new Lane[3];
@@ -42,16 +42,16 @@ public class GameFrame extends JFrame
         Car car = new Car(lanes[defaultLane], lanes);
         Car[] cars = new Car[0];
 	    
+        MoveListener kl = new MoveListener(car);
         DrawComponent dc = new DrawComponent(lanes, car, cars, getHeight());
         
-        this.setContentPane(dc);
-        this.setFocusTraversalKeysEnabled(true);
-        this.setVisible(true);
+        setContentPane(dc);
         MoveCars mc = new MoveCars(car,getHeight(),dc);
-	    
-	    MoveListener kl = new MoveListener(car);
-	    addKeyListener(kl);
-
+        
+        dc.addKeyListener(kl);
+        addKeyListener(kl);
 	    mc.start();
+	    dc.requestFocus();
+	    this.setVisible(true);
     }
 }
