@@ -16,21 +16,22 @@ import javax.swing.JComponent;
  */
 public class DrawComponent extends JComponent {
 
-    private Lane[] lane;
+    private Lane[] lanes;
     private Car car;
     private Car[] otherCar;
 
-    public DrawComponent(int numberOfLanes, Car car, Car[] otherCars, double height){
+    public DrawComponent(Lane[] lanes, Car car, Car[] otherCars, double height){
         super();
 
         this.car = car;
         otherCar = otherCars;
-        lane = new Lane[numberOfLanes];
-        int x = 152;
-        for (int i = 0; i < lane.length; i++) {           
-            lane[i] = new Lane(50,height,x);
-             x = x + 50;
-        }
+        this.lanes = lanes;
+//        lane = new Lane[numberOfLanes];
+//        int x = 152;
+//        for (int i = 0; i < lane.length; i++) {
+//            lane[i] = new Lane(50,height,x);
+//             x = x + 50;
+//        }
     }
 
     public void update(Car car){
@@ -40,8 +41,8 @@ public class DrawComponent extends JComponent {
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2 = (Graphics2D)g;
-        for (int i = 0; i < lane.length; i++){
-            lane[i].draw(g2);
+        for (int i = 0; i < lanes.length; i++){
+            lanes[i].draw(g2);
         }
         g2.setColor(Color.RED);
         g2.fill(car);
@@ -53,7 +54,7 @@ public class DrawComponent extends JComponent {
      * @return
      */
     public double getLeftMostLane() {
-    	return this.lane[0].getLeft();
+    	return this.lanes[0].getLeft();
     }
     
     /**
@@ -61,6 +62,6 @@ public class DrawComponent extends JComponent {
      * @return
      */
     public double getRightMostLane() {
-    	return this.lane[this.lane.length -1].getRight();
+    	return this.lanes[this.lanes.length -1].getRight();
     }
 }

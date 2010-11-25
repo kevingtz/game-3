@@ -7,13 +7,26 @@ import javax.swing.JFrame;
 public class GameFrame extends JFrame 
 {
 	public GameFrame() {
-	    setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-	    setSize(500, 500);
-	
-	    Car car = new Car();
+	    setDefaultCloseOperation(EXIT_ON_CLOSE);
+            //------- set frame variables ------
+            int height = 500;
+            int width = 500;
+	    setSize(width, height);
+            //------- Create Lanes ---------------
+            int numberOfLanes = 3;
+            int defaultLane = 1;
+            Lane[] lanes = new Lane[numberOfLanes];
+            int x = 152;
+
+            for (int i = 0; i < lanes.length; i++) {
+                lanes[i] = new Lane(50,height,x);
+                 x = x + 50;
+            }
+           
+	    Car car = new Car(lanes[defaultLane], lanes);
 	    Car[] cars = new Car[0];
-//	    Lane[] lanes = new Lane[0];
-	    DrawComponent dc = new DrawComponent(3, car, cars, getHeight());
+
+	    DrawComponent dc = new DrawComponent(lanes, car, cars, getHeight());
 	    add(dc);
 	
 	    MoveCars mc = new MoveCars(car,getHeight(),dc);
