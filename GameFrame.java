@@ -6,34 +6,43 @@ import javax.swing.JFrame;
  */
 public class GameFrame extends JFrame 
 {
-	public GameFrame() {
-	    setDefaultCloseOperation(EXIT_ON_CLOSE);
-            //------- set frame variables ------
-            int height = 500;
-            int width = 500;
-	    setSize(width, height);
-            //------- Create Lanes ---------------
-            int numberOfLanes = 3;
-            int defaultLane = 1;
-            Lane[] lanes = new Lane[numberOfLanes];
-            int x = 152;
-
-            for (int i = 0; i < lanes.length; i++) {
-                lanes[i] = new Lane(50,height,x);
-                 x = x + 50;
-            }
-           
-	    Car car = new Car(lanes[defaultLane], lanes);
-	    Car[] cars = new Car[0];
-
-	    DrawComponent dc = new DrawComponent(lanes, car, cars, getHeight());
-	    add(dc);
+	private ButtonDemo menu;
 	
+	public GameFrame() {
+	    setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+	    setSize(500, 500);
+	    menu = new ButtonDemo(this);
+	    this.shwoMenu();
+//	    this.runGame();
+	    
+	}
+	
+	public void shwoMenu()
+	{	
+        //Create and set up the window.
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Create and set up the content pane.
+        menu.setOpaque(true); //content panes must be opaque
+        this.setContentPane(menu);
+        //Display the window.
+        this.setVisible(true);
+	}
+	
+    void runGame()
+    {
+    	System.out.println("SAAAAAAAAAAAA");
+    	Car car = new Car();
+	    Car[] cars = new Car[0];
+	    
+	    DrawComponent dc = new DrawComponent(3, car, cars, getHeight());
+	    
+	    this.setContentPane(dc);
+	    this.setVisible(true);
 	    MoveCars mc = new MoveCars(car,getHeight(),dc);
 	    
 	    MoveListener kl = new MoveListener(car);
 	    addKeyListener(kl);
 
 	    mc.start();
-	}
+    }
 }

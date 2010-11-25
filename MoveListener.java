@@ -22,14 +22,14 @@ public class MoveListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.isActionKey()) {
             int code = e.getKeyCode();
-//            if (code == 40) {
-//                System.out.println("DOWN!!");
-//                 car.setPosition(car.getX(), car.getY()+10);
-//            }
-//            if (code == 38) {
-//               System.out.println("UP!!");
-//                 car.setPosition(car.getX(), car.getY()-10);
-//            }
+            if (code == 40) {
+                //System.out.println("DOWN!!");
+                 car.setPosition(car.getX(), car.getY()+10);
+            }
+            if (code == 38) {
+               //System.out.println("UP!!");
+                 car.setPosition(car.getX(), car.getY()-10);
+            }
             if (code == 37) {
                 //System.out.println("LEFT!!");
 //                car.setPosition(car.getX()-10, car.getY());
