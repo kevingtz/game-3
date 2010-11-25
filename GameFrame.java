@@ -30,15 +30,24 @@ public class GameFrame extends JFrame
 	
     void runGame()
     {
-    	System.out.println("SAAAAAAAAAAAA");
-    	Car car = new Car();
-	    Car[] cars = new Car[0];
+    	int defaultLane = 1;
+        Lane[] lanes = new Lane[3];
+        int x = 152;
+
+        for (int i = 0; i < lanes.length; i++) {
+        	lanes[i] = new Lane(50,this.getHeight(),x);
+        	x = x + 50;
+        }
+        
+        Car car = new Car(lanes[defaultLane], lanes);
+        Car[] cars = new Car[0];
 	    
-	    DrawComponent dc = new DrawComponent(3, car, cars, getHeight());
-	    
-	    this.setContentPane(dc);
-	    this.setVisible(true);
-	    MoveCars mc = new MoveCars(car,getHeight(),dc);
+        DrawComponent dc = new DrawComponent(lanes, car, cars, getHeight());
+        
+        this.setContentPane(dc);
+        this.setFocusTraversalKeysEnabled(true);
+        this.setVisible(true);
+        MoveCars mc = new MoveCars(car,getHeight(),dc);
 	    
 	    MoveListener kl = new MoveListener(car);
 	    addKeyListener(kl);
