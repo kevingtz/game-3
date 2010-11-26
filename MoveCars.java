@@ -11,6 +11,8 @@ public class MoveCars extends Thread {
 	private Car car;
 	private double size;
 	DrawComponent dc;
+	
+	private int hits = 0;
 
 	public MoveCars(Car car, double size, DrawComponent dc) {
 		this.car = car;
@@ -42,7 +44,7 @@ public class MoveCars extends Thread {
 					o.moveDown();
 					if(car.getX() > o.getX() && car.getX() < o.getX()+o.width) {
 						if((int)(o.getY() + o.height) == (int)car.getY()){
-							/*TODO Add code to count score */
+							hits++;
 						}
 					}
 				}
@@ -66,5 +68,10 @@ public class MoveCars extends Thread {
 			dc.update(car);
 			dc.repaint();
 		}
+	}
+	
+	public int getHits() 
+	{
+		return this.hits;
 	}
 }
