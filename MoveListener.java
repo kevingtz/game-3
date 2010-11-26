@@ -24,7 +24,7 @@ public class MoveListener implements KeyListener {
             int code = e.getKeyCode();
             if (code == 40) {
                 //System.out.println("DOWN!!");
-                 car.setAcclerate(false);
+                 car.setBraking(true);
             }
             if (code == 38) {
                //System.out.println("UP!!");

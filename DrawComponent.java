@@ -97,18 +97,18 @@ public class DrawComponent extends JComponent {
         }
         g2.setColor(Color.RED);
         car.setY(this.getHeight() - 3*car.height);
-        //g2.fill(car);
+        g2.fill(car);
         //Draw the image
-        g2.drawImage(imgHero, (int)car.getX(), (int)car.getY(), this);
+        //g2.drawImage(imgHero, (int)car.getX(), (int)car.getY(), this);
         
         g2.setColor(Color.BLACK);        
         
         if (this.obsLines.size() > 0) {
         	for (Obstacles[] obstacle : obsLines) {
         		for ( Obstacles o : obstacle) {
-        			//o.draw(g2);
+        			o.draw(g2);
                             //draw the image
-                            g2.drawImage(imgTurkey, (int)o.getX(), (int)o.getY(), this);
+                           // g2.drawImage(imgTurkey, (int)o.getX(), (int)o.getY(), this);
         		}
         	}
         }
