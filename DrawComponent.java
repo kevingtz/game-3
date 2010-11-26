@@ -8,8 +8,14 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 import javax.swing.JComponent;
 
@@ -24,6 +30,8 @@ public class DrawComponent extends JComponent {
     private Car[] otherCar;
     private Obstacles[] obs;
     private ArrayList<Obstacles[]> obsLines;
+    private BufferedImage imgHero;
+    private BufferedImage imgTurkey;
 
     public DrawComponent(Lane[] lanes, Car car, Car[] otherCars, double height)
     {
@@ -32,6 +40,14 @@ public class DrawComponent extends JComponent {
         this.car = car;
         otherCar = otherCars;
         this.lanes = lanes;
+        //load the image from a path
+        try {
+            String path = "D:/Java/Simple_game/src/resources/";
+            imgHero = ImageIO.read(new File(path+"kenny.png"));
+            imgTurkey = ImageIO.read(new File(path+"turkey.png"));
+        } catch (IOException ex) {
+            System.out.println("WRONG PATH");
+        }
     }
 
     public void update(Car car){
@@ -81,14 +97,18 @@ public class DrawComponent extends JComponent {
         }
         g2.setColor(Color.RED);
         car.setY(this.getHeight() - 3*car.height);
-        g2.fill(car);
+        //g2.fill(car);
+        //Draw the image
+        g2.drawImage(imgHero, (int)car.getX(), (int)car.getY(), this);
         
         g2.setColor(Color.BLACK);        
         
         if (this.obsLines.size() > 0) {
         	for (Obstacles[] obstacle : obsLines) {
         		for ( Obstacles o : obstacle) {
-        			o.draw(g2);
+        			//o.draw(g2);
+                            //draw the image
+                            g2.drawImage(imgTurkey, (int)o.getX(), (int)o.getY(), this);
         		}
         	}
         }
