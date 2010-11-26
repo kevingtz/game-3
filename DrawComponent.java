@@ -88,7 +88,7 @@ public class DrawComponent extends JComponent {
         if (this.obsLines.size() > 0) {
         	for (Obstacles[] obstacle : obsLines) {
         		for ( Obstacles o : obstacle) {
-        			g2.fill(o);
+        			o.draw(g2);
         		}
         	}
         }

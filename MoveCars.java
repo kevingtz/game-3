@@ -22,7 +22,7 @@ public class MoveCars extends Thread {
 	public void run() {
 		ArrayList<Obstacles[]> obsLines = new ArrayList<Obstacles[]>();
 		obsLines.add(0, dc.setObstacle());
-		boolean added = false;
+
 		while (true) {
 
 			// The sleep functionality
@@ -37,26 +37,34 @@ public class MoveCars extends Thread {
 			for (int i = 0; i < obsLines.size(); i++) {
 				Obstacles[] obsLine = obsLines.get(i);
 
+				//Moves each of the elements of each line
 				for (Obstacles o : obsLine) {
 					o.moveDown();
+					if(car.getX() > o.getX() && car.getX() < o.getX()+o.width) {
+						if((int)o.getY() == (int)car.getY()){
+						}
+					}
 				}
-
+				
+				//Creates new lines 
+				for (int j=2; j < 4; j++) {
+					if (((obsLines.get(0)[0].getY() + car.height) > (2.5*j*car.height))) {		
+						if(obsLines.size() < j) {
+							obsLines.set(j-1, dc.setObstacle());
+						}
+					}
+				}
+				
+				//Removes the first line to touch the bottm line
 				if (obsLine[0].getY() + car.height > size) {
 					obsLines.remove(i);
 					added = false;
 				}
-				if (((obsLines.get(0)[0].getY() + car.height) > (4*car.height)) && !added) {		
-					added = true;
-					obsLines.set(1, dc.setObstacle());
-					System.out.println("i= " + " " + obsLines.size());
-				}
-				
 			}
-			
+
 			dc.updateObstacles(obsLines);
 			dc.update(car);
 			dc.repaint();
 		}
-
 	}
 }
