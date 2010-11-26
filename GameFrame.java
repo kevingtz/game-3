@@ -1,4 +1,8 @@
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * Represents the JFrame in which the game will reside
@@ -6,15 +10,15 @@ import javax.swing.JFrame;
  */
 public class GameFrame extends JFrame 
 {
-	private ButtonDemo menu;
+	private StartMenu menu;
+	private MoveCars moveCars;
 	
 	public GameFrame() {
 	    setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 	    setSize(500, 500);
-	    menu = new ButtonDemo(this);
+	    setLayout(new BorderLayout());
+	    menu = new StartMenu(this);
 	    this.shwoMenu();
-//	    this.runGame();
-	    
 	}
 	
 	public void shwoMenu()
@@ -23,7 +27,10 @@ public class GameFrame extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Create and set up the content pane.
         menu.setOpaque(true); //content panes must be opaque
-        this.setContentPane(menu);
+//        this.setContentPane(menu);
+        menu.setSize(500, 150);
+        
+        this.add(menu, BorderLayout.NORTH);
         //Display the window.
         this.setVisible(true);
 	}
@@ -46,12 +53,25 @@ public class GameFrame extends JFrame
         DrawComponent dc = new DrawComponent(lanes, car, cars, getHeight());
         
         setContentPane(dc);
-        MoveCars mc = new MoveCars(car,getHeight(),dc);
+        JLabel nn = new JLabel("SSS");
+        nn.setEnabled(true);
+        
+        add(menu, BorderLayout.NORTH);
+        
+        moveCars = new MoveCars(car,getHeight(),dc);
         
         dc.addKeyListener(kl);
         addKeyListener(kl);
-	    mc.start();
+        moveCars.start();
 	    dc.requestFocus();
 	    this.setVisible(true);
+    }
+    
+    public void stopGame()
+    {
+    	System.out.println("STOP STOP STOP");
+    	moveCars.interrupt();
+    	System.exit(1);
+    	
     }
 }
