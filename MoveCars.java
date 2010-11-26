@@ -22,12 +22,12 @@ public class MoveCars extends Thread {
 	public void run() {
 		ArrayList<Obstacles[]> obsLines = new ArrayList<Obstacles[]>();
 		obsLines.add(0, dc.setObstacle());
-
+		int speed = 2;
 		while (true) {
-
+			speed = car.getAcclerate() ? 1:2;
 			// The sleep functionality
 			try {
-				sleep(2);
+				sleep(speed);
 			} catch (InterruptedException ex) {
 				Logger.getLogger(MoveCars.class.getName()).log(Level.SEVERE,
 						null, ex);
@@ -58,7 +58,6 @@ public class MoveCars extends Thread {
 				//Removes the first line to touch the bottm line
 				if (obsLine[0].getY() + car.height > size) {
 					obsLines.remove(i);
-					added = false;
 				}
 			}
 

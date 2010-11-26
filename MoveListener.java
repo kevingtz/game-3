@@ -24,11 +24,11 @@ public class MoveListener implements KeyListener {
             int code = e.getKeyCode();
             if (code == 40) {
                 //System.out.println("DOWN!!");
-                 car.setPosition(car.getX(), car.getY()+10);
+                 car.setAcclerate(false);
             }
             if (code == 38) {
                //System.out.println("UP!!");
-                 car.setPosition(car.getX(), car.getY()-10);
+            	car.setAcclerate(true);
             }
             if (code == 37) {
                 //System.out.println("LEFT!!");
@@ -44,6 +44,9 @@ public class MoveListener implements KeyListener {
     }
 
     public void keyReleased(KeyEvent e) {
+    	if(e.getKeyCode() == 38) {
+    		car.setAcclerate(false);
+    	}
     }
 
     public Car getCar(){

@@ -9,6 +9,7 @@ public class Car extends Rectangle2D.Double{
     private Lane lane;
     private Lane[] lanes;
     private int laneNum;
+    private boolean accelerate = false;
 
     
     public Car(Lane lane, Lane[] lanes){
@@ -25,7 +26,23 @@ public class Car extends Rectangle2D.Double{
     public void setPosition(double x, double y){
         setRect(x, y, width,height);
     }
-
+    
+    /**
+     * Get the acceleration mode statuse
+     * @return the is acceleration mode on
+     */
+    public boolean getAcclerate() {
+    	return this.accelerate;
+    }
+    
+    /**
+     * Set the acceleration mode of the car
+     * @param boolean flag
+     */
+    public void setAcclerate(boolean flag) {
+    	this.accelerate = flag;
+    }
+    
     public Lane getLane() {
         return lane;
     }
@@ -68,6 +85,5 @@ public class Car extends Rectangle2D.Double{
             return false;
         }
     }
-
 
 }
