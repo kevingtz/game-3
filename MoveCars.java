@@ -41,7 +41,8 @@ public class MoveCars extends Thread {
 				for (Obstacles o : obsLine) {
 					o.moveDown();
 					if(car.getX() > o.getX() && car.getX() < o.getX()+o.width) {
-						if((int)o.getY() == (int)car.getY()){
+						if((int)(o.getY() + o.height) == (int)car.getY()){
+							/*TODO Add code to count score */
 						}
 					}
 				}
