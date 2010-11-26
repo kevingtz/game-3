@@ -30,7 +30,7 @@ public class ButtonDemo extends JPanel
         ImageIcon middleButtonIcon = createImageIcon("images/middle.gif");
         ImageIcon rightButtonIcon = createImageIcon("images/left.gif");
 
-        b1 = new JButton("Start Gam");
+        b1 = new JButton("Start Game");
         b1.setVerticalTextPosition(AbstractButton.CENTER);
         b1.setHorizontalTextPosition(AbstractButton.LEADING);
         b1.setMnemonic(KeyEvent.VK_D);

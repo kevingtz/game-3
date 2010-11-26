@@ -45,23 +45,27 @@ public class Car extends Rectangle2D.Double{
         return num;
     }
 
-    public void goLeft(){
+    public boolean goLeft(){
         laneNum--;
         if(laneNum >= 0){
             lane = lanes[laneNum];
             setLane(lane);
+            return true;
         }else{
             laneNum++;
+            return false;
         }
     }
 
-    public void goRight(){
+    public boolean goRight(){
         laneNum++;
         if(laneNum <= lanes.length-1){
             lane = lanes[laneNum];
              setLane(lane);
+             return true;
         }else{
             laneNum--;
+            return false;
         }
     }
 

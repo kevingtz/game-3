@@ -22,7 +22,7 @@ public class MoveCars extends Thread {
 	public void run() {
 		ArrayList<Obstacles[]> obsLines = new ArrayList<Obstacles[]>();
 		obsLines.add(0, dc.setObstacle());
-		boolean added = false;
+
 		while (true) {
 
 			// The sleep functionality
